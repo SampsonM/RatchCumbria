@@ -1,8 +1,10 @@
 import Vue from 'vue';
+import Vuex from 'vuex';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
 
 Vue.use(Router);
+Vue.use(Vuex);
 
 export default new Router({
   mode: 'history',
