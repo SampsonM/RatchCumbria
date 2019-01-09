@@ -3,17 +3,15 @@
     <router-link to="/">Home</router-link>
     <router-link to="/about">About</router-link>
 
-    <SearchBox 
-      :search="handleSearch"
-      type="text"
-      name="SearchBox"
-    />
+    <SearchBox/>
+
+    <p>Ratch Cumbria</p>
 
   </div>
 </template>
 
 <script>
-import SearchBox from './dumbComponents/searchBox';
+import SearchBox from './searchBox';
 
 export default {
   name: 'Nav',
@@ -21,35 +19,41 @@ export default {
     SearchBox
   },
   methods: {
-    handleSearch: (value) => {
-      console.log(value)
-    }
   }
 }
 </script>
 
 <style lang="scss">
 @import '../styles/colours';
+@import '../styles/breakpoints';
 
 #nav {
   padding: 15px 30px;
   background-color: $green;
   display: flex;
+  align-items: center;
 
   a {
     font-weight: bold;
-    color: $blue;
+    color: $header-link;
     margin: 10px;
 
     &:first-of-type {
-      border-right: 1px solid white;
+      border-right: 1px solid $white;
       padding-right: 10px;
       margin-right: 0;
     }
 
-    &.router-link-exact-active {
-      color: white;
+    &:hover {
+      color: $hover-link
     }
+  }
+
+  p {
+    margin: 0;
+    margin-left: auto;
+    font-size: 20px;
+    color: $white;
   }
 }
 </style>
