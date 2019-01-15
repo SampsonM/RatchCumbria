@@ -93,8 +93,7 @@ export default {
         'Removals',
         'Mobile alloy wheels',
         'Insulation',
-        'Welder',
-
+        'Welder'
       ]
     }
   },

@@ -3,14 +3,28 @@
     <div class="banner">
       <h1>Search for tradesmen across Cumbria</h1>
     </div>
+
+    <div v-for="company in companies"
+      :key="company._id">
+      <CompanyResult :company="company"/>
+    </div>
+
   </div>
 </template>
 
 <script>
-  export default {
-    components: {
+import CompanyResult from '../components/companyResult'
+
+export default {
+  components: {
+    CompanyResult
+  },
+  computed: {
+    companies() {
+      return this.$store.state.companies
     }
   }
+}
 </script>
 
 <style lang="scss">

@@ -46,6 +46,7 @@ export default {
     },
     handleSearch() {
       // send request here
+      this.$store.dispatch('getCompanies')
     },
     toggleSearchBox() {
       this.isOpen = !this.isOpen;
