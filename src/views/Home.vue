@@ -33,6 +33,7 @@ export default {
 .home {
   position: relative;
   padding: 10px;
+  z-index: -1;
 }
 
 .banner {

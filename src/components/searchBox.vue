@@ -61,6 +61,7 @@ export default {
 .search-box {
   display: flex;
   margin: 5px;
+  z-index: 2;
 
   button {
     color: $white;
