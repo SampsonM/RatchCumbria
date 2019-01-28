@@ -18,10 +18,14 @@
         </span>
         <span class="label-input">
           <label for="trade">Trade: </label>
-          <select name="trade" class="dropdown">
+          <select 
+            name="trade" 
+            class="dropdown"
+            placeholder="Select trade...">
             <option 
               v-for="(trade, index) in trades"
-              :key="index">
+              :key="index"
+              :value="trade">
               {{trade}}
             </option>
           </select>
@@ -72,30 +76,18 @@
   </div>
 </template>
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'signup',
   data() {
     return {
-      trades: [
-        'Select trade...',
-        'Windows',
-        'Plumber',
-        'Joiner',
-        'Plasterer',
-        'Electrician',
-        'Bricklayer',
-        'Landscaper',
-        'Gardener',
-        'Carpenter',
-        'Gas/ Boiler',
-        'Handy Man',
-        'Roofer',
-        'Removals',
-        'Mobile alloy wheels',
-        'Insulation',
-        'Welder'
-      ]
     }
+  },
+  computed: {
+    ...mapState([
+      'trades'
+    ])
   },
   action: {
     // spread actions here with map actions

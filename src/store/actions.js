@@ -1,12 +1,14 @@
 import axios from 'axios'
 import * as MT from './mutationTypes'
+import getUrl from '../services'
 
 export default {
-  getCompanies: ({commit}) => {
-
+  getCompanies: ({ commit }, payload) => {
     commit(MT.SET_APP_LOADING, true)
 
-    axios.get('https://localhost:3000/api/companies')
+    const url = getUrl(payload);
+
+    axios.get(url)
       .then(companies => {
         commit(MT.SET_COMPANIES, companies.data)
       })

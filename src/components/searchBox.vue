@@ -5,51 +5,45 @@
         type="text"
         placeholder="Search">
 
-      <button @click="handleClick">
-        <span v-show="isOpen">
-          <i class="fas fa-times-circle"/>
-        </span>
-        <span v-show="!isOpen">
-          <i class="fas fa-search"></i>
-        </span>
-      </button>
+      <select
+        v-model="selectedTrade">
+        <option
+          v-for="(trade, index) in trades"
+          :key="index"
+          :value="trade.value || trade"
+          >
+            {{trade.name || trade}}
+        </option>
+      </select>
     </div>
-
-    <div v-if="isOpen" class="dropdown-search-box">
-      <input type="text">
-      <button @click="handleClick">
-        <i class="fas fa-search"></i>
-      </button>
-    </div>
+      
+    <button @click="handleClick">
+      <i class="fas fa-search"></i>
+    </button>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'SearchBox',
   data() {
     return {
-      isOpen: false
     }
+  },
+  computed: {
+    ...mapState([
+      'trades'
+    ])
   },
   methods: {
     handleClick(event) {
-      if (window.innerWidth < 480) {
-        if (this.isOpen) {
-          this.handleSearch()
-        }
-
-        this.toggleSearchBox()
-      }
-
       this.handleSearch()
     },
     handleSearch() {
       // send request here
       this.$store.dispatch('getCompanies')
-    },
-    toggleSearchBox() {
-      this.isOpen = !this.isOpen;
     }
   }
 }

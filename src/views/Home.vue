@@ -1,7 +1,9 @@
 <template>
   <div class="home">
-    <div class="banner">
+    <div class="search-banner">
       <h1>Search for tradesmen across Cumbria</h1>
+
+      <search-box></search-box>
     </div>
 
     <div v-for="company in companies"
@@ -14,10 +16,12 @@
 
 <script>
 import CompanyResult from '../components/companyResult'
+import SearchBox from '../components/searchBox'
 
 export default {
   components: {
-    CompanyResult
+    CompanyResult,
+    SearchBox
   },
   computed: {
     companies() {
@@ -33,10 +37,9 @@ export default {
 .home {
   position: relative;
   padding: 10px;
-  z-index: -1;
 }
 
-.banner {
+.search-banner {
   width: 100%;
   height: 200px;
   background: $lighter-green;
@@ -44,6 +47,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction:column;
 
   h1 {
     margin: 0;

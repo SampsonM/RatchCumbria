@@ -3,23 +3,15 @@
     <router-link to="/">Home</router-link>
     <router-link to="/about">About</router-link>
 
-    <SearchBox/>
-
     <p>Ratch Cumbria</p>
 
   </div>
 </template>
 
 <script>
-import SearchBox from './searchBox';
 
 export default {
-  name: 'Nav',
-  components: {
-    SearchBox
-  },
-  methods: {
-  }
+  name: 'Nav'
 }
 </script>
 
