@@ -5,18 +5,15 @@
         type="text"
         placeholder="Search">
 
-      <select
-        v-model="selectedTrade">
-        <option
-          v-for="(trade, index) in trades"
-          :key="index"
-          :value="trade.value || trade"
-          >
-            {{trade.name || trade}}
-        </option>
-      </select>
+        <dropdown 
+          :data="trades"
+          :clicked="handleClick"
+          placeholder="select trade...">
+        </dropdown>
+
+
     </div>
-      
+
     <button @click="handleClick">
       <i class="fas fa-search"></i>
     </button>
@@ -25,12 +22,16 @@
 
 <script>
 import { mapState } from 'vuex'
+import dropdown from './dropdown'
 
 export default {
   name: 'SearchBox',
   data() {
     return {
     }
+  },
+  components: {
+    dropdown
   },
   computed: {
     ...mapState([
