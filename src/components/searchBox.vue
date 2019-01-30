@@ -1,17 +1,17 @@
 <template>
   <div>
     <div class="search-box">
-      <input 
-        type="text"
-        placeholder="Search">
+      <dropdown 
+        :data="locations"
+        :clicked="handleClick"
+        placeholder="select location...">
+      </dropdown>
 
-        <dropdown 
-          :data="trades"
-          :clicked="handleClick"
-          placeholder="select trade...">
-        </dropdown>
-
-
+      <dropdown 
+        :data="trades"
+        :clicked="handleClick"
+        placeholder="select trade...">
+      </dropdown>
     </div>
 
     <button @click="handleClick">
@@ -35,7 +35,8 @@ export default {
   },
   computed: {
     ...mapState([
-      'trades'
+      'trades',
+      'locations'
     ])
   },
   methods: {

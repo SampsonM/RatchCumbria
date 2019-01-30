@@ -8,15 +8,17 @@
       <i class="fas fa-angle-down"></i>
     </div>
 
-    <ul class="dropdown__list"
-      :class="isDropdownOpen ? 'dropdown__list--open' : 'dropdown__list--closed'">
-      <li
-        v-for="(value, index) in data"
-        :key="index"
-        @click="(event) => handleClick(value, event)">
-          {{value.title}}
-      </li>
-    </ul>
+  <div class="dropdown__container">
+      <ul class="dropdown__container-list"
+        :class="isDropdownOpen ? 'dropdown__container-list--open' : 'dropdown__container-list--closed'">
+        <li
+          v-for="(value, index) in data"
+          :key="index"
+          @click="(event) => handleClick(value, event)">
+            {{value.title}}
+        </li>
+      </ul>
+  </div>
     
   </div>
 </template>
@@ -83,17 +85,26 @@ export default {
     font-size: 20px;
   }
 
-  &__list {
+  &__container {
+    position: fixed;
+    width: 200px;
+    margin-top: 48px;
+  }
+
+  &__container-list {
     background-color: green;
     position: relative;
-    top: 1px;
+    left: -2px;
     margin: 0;
     text-align: left;
     padding: 0;
     cursor: default;
+    border-radius: 3px;
 
     &--open {
       background-color: gainsboro;
+      max-height: 200px;
+      overflow: auto;
     }
 
     &--closed {
@@ -102,9 +113,22 @@ export default {
     }
 
     li {
-      padding: 5px;
+      padding: 10px 5px 0 10px;
       list-style-type: none;
+
+      &:last-child {
+        padding-bottom: 10px;
+      }
     }
+  }
+}
+
+@keyframes openDropdown {
+  from {
+    height: 0;
+  }
+  to {
+    height: auto;
   }
 }
 </style>

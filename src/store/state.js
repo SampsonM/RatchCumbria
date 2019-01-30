@@ -65,5 +65,15 @@ export default {
       title: 'Welder',
       value: 'welder'
     },
+  ],
+  locations: [
+    {
+      title: 'Whitehaven',
+      value: 'whitehaven'
+    },
+    {
+      title: 'Workington',
+      value: 'workington'
+    }
   ]
 }
