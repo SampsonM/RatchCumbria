@@ -3,31 +3,33 @@
     <div class="search-box">
       <dropdown 
         :data="locations"
-        :clicked="handleClick"
+        @clicked="handleClick"
         placeholder="select location...">
       </dropdown>
 
       <dropdown 
         :data="trades"
-        :clicked="handleClick"
+        @clicked="handleClick"
         placeholder="select trade...">
       </dropdown>
     </div>
 
-    <button @click="handleClick">
+    <button @click="search">
       <i class="fas fa-search"></i>
     </button>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, Store } from 'vuex'
 import dropdown from './dropdown'
 
 export default {
   name: 'SearchBox',
   data() {
     return {
+      location: '',
+      trade: ''
     }
   },
   components: {
@@ -40,12 +42,11 @@ export default {
     ])
   },
   methods: {
-    handleClick(event) {
-      this.handleSearch()
+    search() {
+      this.$store.dispatch('searchTrades')
     },
-    handleSearch() {
-      // send request here
-      this.$store.dispatch('getCompanies')
+    handleClick(data) {
+      this.$store.dispatch(`update${data.dataType}`, data)
     }
   }
 }
@@ -58,6 +59,7 @@ export default {
   display: flex;
   margin: 5px;
   z-index: 2;
+  flex-direction: row;
 
   button {
     color: $white;

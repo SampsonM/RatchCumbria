@@ -8,5 +8,11 @@ export default {
   },
   [MT.SET_APP_LOADING](state, boolean) {
     state.appIsLoading = boolean
+  },
+  [MT.UPDATE_LOCATION](state, location) {
+    state.userLocation = location
+  },
+  [MT.UPDATE_TRADE](state, trade) {
+    state.userTrade = trade
   }
 }

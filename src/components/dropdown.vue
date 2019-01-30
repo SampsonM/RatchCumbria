@@ -14,7 +14,7 @@
         <li
           v-for="(value, index) in data"
           :key="index"
-          @click="(event) => handleClick(value, event)">
+          @click="() => handleClick(value)">
             {{value.title}}
         </li>
       </ul>
@@ -42,10 +42,10 @@ export default {
     }
   },
   methods: {
-    handleClick(data, event) {
-      this.dataValue = data.title
+    handleClick(data) {
+      this.dataValue = data.title;
       this.toggleDropdown()
-      this.$emit('clicked', event)
+      this.$emit('clicked', data)
     },
     toggleDropdown() {
       this.isDropdownOpen = !this.isDropdownOpen
