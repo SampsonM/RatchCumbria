@@ -48,12 +48,12 @@ export default {
     },
     {
       title: 'Gas / Boiler',
-      value: 'gasBoiler',
+      value: 'gas+boiler',
       dataType: 'Trade'
     },
     {
       title: 'Handy Man',
-      value: 'handyMan',
+      value: 'handy+man',
       dataType: 'Trade'
     },
     {
@@ -68,7 +68,7 @@ export default {
     },
     {
       title: 'Mobile alloy wheels',
-      value: 'mobileAlloyWheels',
+      value: 'mobile+alloy+wheels',
       dataType: 'Trade'
     },
     {
@@ -93,8 +93,10 @@ export default {
       value: 'workington',
       dataType: 'Location'
     }
-  ]
-  ,
-  userLocation: {},
-  userTrade: {}
+  ],
+  searchParameters: {
+    location: {},
+    trade: {},
+    companyname: {}
+  }
 }

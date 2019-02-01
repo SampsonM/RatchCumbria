@@ -10,9 +10,12 @@ export default {
     state.appIsLoading = boolean
   },
   [MT.UPDATE_LOCATION](state, location) {
-    state.userLocation = location
+    state.searchParameters.location = location
   },
   [MT.UPDATE_TRADE](state, trade) {
-    state.userTrade = trade
+    state.searchParameters.trade = trade
+  },
+  [MT.UPDATE_COMPANY_NAME](state, trade) {
+    state.searchParameters.companyname = trade
   }
 }
