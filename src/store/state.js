@@ -2,6 +2,11 @@ export default {
   companies: [],
   trades: [
     {
+      title: 'All',
+      value: 'all',
+      dataType: 'Trade'
+    },
+    {
       title: 'Windows',
       value: 'windows',
       dataType: 'Trade'
@@ -83,6 +88,11 @@ export default {
     },
   ],
   locations: [
+    {
+      title: 'All',
+      value: 'all',
+      dataType: 'Location'
+    },
     {
       title: 'Whitehaven',
       value: 'whitehaven',

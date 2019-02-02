@@ -1,56 +1,32 @@
 <template>
   <div class="home">
-    <div class="search-banner">
-      <h1>Search for tradesmen across Cumbria</h1>
-
-      <search-box></search-box>
-    </div>
-
-    <div v-for="company in companies"
-      :key="company._id">
-      <CompanyResult :company="company"/>
-    </div>
+    <SearchBanner></SearchBanner>
 
   </div>
 </template>
 
 <script>
-import CompanyResult from '../components/companyResult'
-import SearchBox from '../components/searchBox'
+import SearchBanner from '../components/searchBanner'
 
 export default {
+  name: 'home',
   components: {
-    CompanyResult,
-    SearchBox
-  },
-  computed: {
-    companies() {
-      return this.$store.state.companies
-    }
+    SearchBanner
   }
 }
 </script>
 
 <style lang="scss">
 @import '../styles/colours';
+@import '../styles/breakpoints';
 
 .home {
   position: relative;
-  padding: 10px;
-}
+  margin: 10px;
 
-.search-banner {
-  width: 100%;
-  height: 200px;
-  background: $lighter-green;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction:column;
-
-  h1 {
-    margin: 0;
+  @include desktop {
+    max-width: 1004px;
+    margin: 10px auto;
   }
 }
 </style>

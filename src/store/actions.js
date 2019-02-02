@@ -7,10 +7,11 @@ export default {
 
     commit(MT.SET_APP_LOADING, true)
 
-    const url = getCompaniesUrl(state.searchParameters)
+    const {url} = getCompaniesUrl(state.searchParameters)
 
     axios.get(url)
       .then(companies => {
+        console.log(url)
         commit(MT.SET_COMPANIES, companies.data)
       })
       .then(() => {

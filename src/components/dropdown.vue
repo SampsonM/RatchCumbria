@@ -1,24 +1,27 @@
 <template>
   <div class="dropdown">
     <div class="dropdown__placeholder"
+      tabindex="0"
+      @keydown="toggleDropdown"
       @click="toggleDropdown">
-      <p>
+      <p :class="{'no-placeholder' : dataValue !== ''}">
         {{placeholderValue}}
       </p>
       <i class="fas fa-angle-down"></i>
     </div>
 
-  <div class="dropdown__container">
-      <ul class="dropdown__container-list"
-        :class="isDropdownOpen ? 'dropdown__container-list--open' : 'dropdown__container-list--closed'">
-        <li
-          v-for="(value, index) in data"
-          :key="index"
-          @click="() => handleClick(value)">
-            {{value.title}}
-        </li>
-      </ul>
-  </div>
+    <ul class="dropdown__container-list"
+      tabindex="0"
+      :class="isDropdownOpen ? 'dropdown__container-list--open' : 'dropdown__container-list--closed'">
+      <li
+        v-for="(value, index) in data"
+        :key="index"
+        tabindex="0"
+        @keydown.enter="() => handleClick(value)"
+        @click="() => handleClick(value)">
+          {{value.title}}
+      </li>
+    </ul>
     
   </div>
 </template>
@@ -63,14 +66,17 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import '../styles/colours';
+
 .dropdown {
-  height: 50px;
+  height: 39px;
   width: 200px;
-  border: 2px solid #ff0;
+  border: 2px solid $light-green;
   border-radius: 3px;
-  background-color: red;
+  background-color: $bg-blue;
   display: flex;
   flex-direction: column;
+  align-content: center;
 
   &__placeholder {
     display: flex;
@@ -78,32 +84,37 @@ export default {
     align-items: center;
     font-size: 14px;
     padding: 0 15px;
+    height: 49px;
+    align-content: center;
     cursor: pointer;
+
+    & p {
+      color: $placeholder-blue;
+      margin: 0;
+    }
+
+    & .no-placeholder {
+      color: $text-blue;
+    }
   }
   
   .fa-angle-down {
     font-size: 20px;
   }
 
-  &__container {
-    position: fixed;
-    width: 200px;
-    margin-top: 48px;
-  }
-
   &__container-list {
-    background-color: green;
-    position: relative;
-    left: -2px;
-    margin: 0;
+    position: fixed;
+    width: 199px;
+    margin-top: 38px;
     text-align: left;
+    margin-left: -1px;
     padding: 0;
     cursor: default;
     border-radius: 3px;
 
     &--open {
       background-color: gainsboro;
-      max-height: 200px;
+      max-height: 215px;
       overflow: auto;
     }
 
