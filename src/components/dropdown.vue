@@ -42,6 +42,9 @@ export default {
     placeholder: {
       type: String,
       required: true
+    },
+    currentValue: {
+      type: Object
     }
   },
   methods: {
@@ -56,13 +59,14 @@ export default {
   },
   computed: {
     placeholderValue() {
-      if (this.dataValue !== '') {
+      if (this.currentValue.title !== undefined) {
+        this.dataValue = this.currentValue.title
         return this.dataValue
       }
 
       return this.placeholder;
     }
-  },
+  }
 }
 </script>
 <style lang="scss" scoped>

@@ -8,6 +8,7 @@
         name="location"
         :data="locations"
         @clicked="handleClick"
+        :currentValue="location"
         placeholder="select location...">
       </dropdown>
 
@@ -16,6 +17,7 @@
         name="trade"
         :data="trades"
         @clicked="handleClick"
+        :currentValue="trade"
         placeholder="select trade...">
       </dropdown>
 
@@ -33,15 +35,13 @@
 </template>
 
 <script>
-import { mapState, Store } from 'vuex'
+import { mapState } from 'vuex'
 import dropdown from './dropdown'
 
 export default {
   name: 'SearchBox',
   data() {
     return {
-      location: '',
-      trade: ''
     }
   },
   components: {
@@ -51,7 +51,12 @@ export default {
     ...mapState([
       'trades',
       'locations'
-    ])
+    ]),
+    ...mapState({
+      location: state => state.searchParameters.location,
+      trade: state =>  state.searchParameters.trade
+    })
+
   },
   methods: {
     search() {
