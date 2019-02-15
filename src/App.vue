@@ -27,12 +27,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   background: #f0f8ff;
-  height: 100vh;
-}
-
-@media only screen and(max-width: 380px){
-  #app {
-    overflow: scroll;
-  }  
+  height: 100%;
+  min-height: 100vh;
 }
 </style>
